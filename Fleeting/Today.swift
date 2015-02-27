@@ -11,23 +11,25 @@ struct Current {
     
     var currentTime: String?
     var temperature: Int
+    var humidity: Double
+    var precipProbability: Double
     var summary: String
     var icon: UIImage?
+    // var moonPhase: UIImage?
     
     init(weatherDictionary: NSDictionary) {
         let currentWeather = weatherDictionary["currently"] as NSDictionary
         
-            temperature = currentWeather["temperature"] as Int
-            summary = currentWeather["summary"] as String
+        temperature = currentWeather["temperature"] as Int
+        humidity = currentWeather["humidity"] as Double
+        precipProbability = currentWeather["precipProbability"] as Double
+        summary = currentWeather["summary"] as String
         
-        //let iconString = currentWeather["icon"] as String
-        //icon = weatherIconFromString(iconString)
+        let currentTimeIntValue = currentWeather["time"] as Int
+        currentTime = dateStringFromUnixTime(currentTimeIntValue)
         
-        //let currentTimeIntValue = currentWeather["time"] as Int
-        //currentTime = dateStringFromUnixTime(currentTimeIntValue)
-        
-        //humidity = currentWeather["humidity"] as Double
-        //precipProbability = currentWeather["precipProbability"] as Double
+//        let iconString = currentWeather["icon"] as String
+//        icon = weatherIconFromString(iconString)
     }
     
     func dateStringFromUnixTime(unixTime: Int) -> String {
