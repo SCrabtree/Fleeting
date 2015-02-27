@@ -2,7 +2,7 @@
 //
 //  Fleeting
 //  Created by Sean Crabtree on 2/04/15.
-//  Copyright (c) 2014 Sean Crabtree. All rights reserved.
+//  Copyright (c) 2015 Sean Crabtree. All rights reserved.
 
 import Foundation
 import UIKit
@@ -42,61 +42,43 @@ struct Current {
         
         return dateFormatter.stringFromDate(weatherDate)
     }
-    
-    /* MOON PHASES
-    
-    func moonPhaseIconFromInt(intIcon: Int) -> UIImage {
-    var imageName: String
-    
-    switch intIcon {
-    case 0:
-    imageName = "moon-new"
-    case 0.25:
-    imageName = "moon-first-quarter"
-    case 0.5:
-    imageName = "moon-full"
-    case 0.75:
-    imageName = "moon-last-quarter"
-    default:
-    imageName = "default"
-    }
-    
-    var iconImage = UIImage(named: imageName)
-    return iconImage!
-    }
-    */
-    /*
+
     func weatherIconFromString(stringIcon: String) -> UIImage {
         var imageName: String
         
         switch stringIcon {
-        case "Clear":
+        case "clear":
             imageName = "clear-day"
         case "clear-night":
             imageName = "clear-night"
         case "rain":
-            imageName = "rain"
+            imageName = "rain-snow"
         case "snow":
             imageName = "snow"
         case "sleet":
-            imageName = "sleet"
+            imageName = "cloudy-sleet"
         case "wind":
-            imageName = "wind"
+            imageName = "wind-fog"
         case "fog":
-            imageName = "fog"
+            imageName = "wind-fog"
         case "cloudy":
-            imageName = "cloudy"
+            imageName = "cloudy-sleet"
         case "partly-cloudy-day":
             imageName = "partly-cloudy"
         case "partly-cloudy-night":
             imageName = "cloudy-night"
+        case "hail":
+            imageName = "hail-thunderstorm-tornado"
+        case "thunderstorm":
+            imageName = "hail-thunderstorm-tornado"
+        case "tornado":
+            imageName = "hail-thunderstorm-tornado"
         default:
             imageName = "default"
         }
-        
+    
         var iconImage = UIImage(named: imageName)
         return iconImage!
     }
-    */
     
 }

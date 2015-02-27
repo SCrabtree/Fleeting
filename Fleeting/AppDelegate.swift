@@ -2,7 +2,7 @@
 //
 //  Fleeting
 //  Created by Sean Crabtree on 2/04/15.
-//  Copyright (c) 2014 Sean Crabtree. All rights reserved.
+//  Copyright (c) 2015 Sean Crabtree. All rights reserved.
 
 import UIKit
 
