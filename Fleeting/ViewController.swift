@@ -51,12 +51,13 @@ class ViewController: UIViewController,CLLocationManagerDelegate {
         locationManager.delegate = self
         locationManager.desiredAccuracy = kCLLocationAccuracyBest
         locationManager.requestAlwaysAuthorization()
-        locationManager.startUpdatingLocation()    }
+        locationManager.startUpdatingLocation()
+    }
     
     func locationManager(manager: CLLocationManager!, didFailWithError error: NSError!) {
         locationManager.stopUpdatingLocation()
         if ((error) != nil) {
-            if (seenError == false) {
+            if (!seenError) {
                 seenError = true
                 print(error)
             }
@@ -64,7 +65,7 @@ class ViewController: UIViewController,CLLocationManagerDelegate {
     }
     
     func locationManager(manager: CLLocationManager!, didUpdateLocations locations: [AnyObject]!) {
-        if (locationFixAchieved == false) {
+        if (!locationFixAchieved) {
             locationFixAchieved = true
             var locationArray = locations as NSArray
             var locationObj = locationArray.lastObject as CLLocation
@@ -75,8 +76,6 @@ class ViewController: UIViewController,CLLocationManagerDelegate {
             
             self.userLatitude = coord.latitude
             self.userLongitude = coord.longitude
-            
-            println(userLocation)
             
             getCurrentWeatherData()
         }
@@ -115,6 +114,7 @@ class ViewController: UIViewController,CLLocationManagerDelegate {
         let baseURL = NSURL(string: "https://api.forecast.io/forecast/\(apiKey)/")
         //let forecastURL = NSURL(string: "34.017547,-118.493111", relativeToURL: baseURL)
         let forecastURL = NSURL(string: "\(userLocation)", relativeToURL: baseURL)
+println("### userLocation: \(forecastURL)")
         
         let sharedSession = NSURLSession.sharedSession()
         let downloadTask: NSURLSessionDownloadTask = sharedSession.downloadTaskWithURL(forecastURL!, completionHandler: { (location: NSURL!, response: NSURLResponse!, error: NSError!) -> Void in
