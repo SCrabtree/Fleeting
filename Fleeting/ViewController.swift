@@ -8,6 +8,13 @@ import UIKit
 import CoreLocation
 
 class ViewController: UIViewController,CLLocationManagerDelegate {
+/*
+    let artwork = ArtWork()
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        mainArt.image = artwork.randomArt()
+*/
     
     var seenError : Bool = false
     var locationFixAchieved : Bool = false
@@ -71,9 +78,6 @@ class ViewController: UIViewController,CLLocationManagerDelegate {
             var locationObj = locationArray.lastObject as CLLocation
             var coord = locationObj.coordinate
             
-            //println(coord.latitude)
-            //println(coord.longitude)
-            
             self.userLatitude = coord.latitude
             self.userLongitude = coord.longitude
             
@@ -127,7 +131,7 @@ println("### userLocation: \(forecastURL)")
                 let currentWeather = Current(weatherDictionary: weatherDictionary)
                 dispatch_async(dispatch_get_main_queue(), { () -> Void in
                     self.temperatureLabel.text = "\(currentWeather.temperature)"
-//                    self.precipitationLabel.text = "\(currentWeather.precipProbability)"
+                    //self.precipitationLabel.text = "\(currentWeather.precipProbability)"
                     self.summaryLabel.text = "\(currentWeather.summary)"
                 })
             } else{

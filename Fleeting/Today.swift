@@ -42,7 +42,38 @@ struct Current {
         
         return dateFormatter.stringFromDate(weatherDate)
     }
+}
+/*
+struct ArtWork {
+    
+    let artworkArray = [
+        
+        
+        
+        
+        
+    ]
+        
+    func randomArt() -> Image {
+        // var randomNumber = Int(arc4random_uniform(UInt32(factsArray.count)))
+            
+        var unsignedArrayCount = UInt32(artworkArray.count)
+        var unsignedRandomNumber = arc4random_uniform(unsignedArrayCount)
+        var randomNumber = Int(unsignedRandomNumber)
+        
+        return artworkArray[randomNumber]
+    }
+}
+*/
 
+
+
+
+
+
+
+
+/* IMAGE PER WEATHER TYPE
     func weatherIconFromString(stringIcon: String) -> UIImage {
         var imageName: String
         
@@ -79,6 +110,4 @@ struct Current {
     
         var iconImage = UIImage(named: imageName)
         return iconImage!
-    }
-    
-}
+    }   */
