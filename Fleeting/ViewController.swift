@@ -8,13 +8,6 @@ import UIKit
 import CoreLocation
 
 class ViewController: UIViewController,CLLocationManagerDelegate {
-/*
-    let artwork = ArtWork()
-    
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        mainArt.image = artwork.randomArt()
-*/
     
     var seenError : Bool = false
     var locationFixAchieved : Bool = false
@@ -42,11 +35,13 @@ class ViewController: UIViewController,CLLocationManagerDelegate {
     
     let apiKey = "d7539a30efd5669aa702bdce4a2e1436"
     
+    //
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
         
         initLocationManager()
+        initArtwork()
     }
     
     // LOCATION
@@ -61,6 +56,7 @@ class ViewController: UIViewController,CLLocationManagerDelegate {
         locationManager.startUpdatingLocation()
     }
     
+    // Override CLLocationManagerDelegate
     func locationManager(manager: CLLocationManager!, didFailWithError error: NSError!) {
         locationManager.stopUpdatingLocation()
         if ((error) != nil) {
@@ -71,6 +67,7 @@ class ViewController: UIViewController,CLLocationManagerDelegate {
         }
     }
     
+    // Override CLLocationManagerDelegate
     func locationManager(manager: CLLocationManager!, didUpdateLocations locations: [AnyObject]!) {
         if (!locationFixAchieved) {
             locationFixAchieved = true
@@ -156,6 +153,13 @@ println("### userLocation: \(forecastURL)")
         })
         
         downloadTask.resume()
+    }
+    
+    func initArtwork() {
+        let r = Int(arc4random())
+        let artId = r % 13 + 1;
+        let artIdString = "\(artId)"
+        self.mainArt.image = UIImage(named: artIdString)
     }
 /*
     @IBAction func refresh() {
