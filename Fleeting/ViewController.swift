@@ -17,21 +17,13 @@ class ViewController: UIViewController,CLLocationManagerDelegate {
     var userLatitude : Double!
     var userLongitude : Double!
     
-//    @IBOutlet weak var iconView: UIImageView!
-//    @IBOutlet weak var precipitationLabel: UILabel!
-//    @IBOutlet weak var currentTimeLabel: UILabel!
     @IBOutlet weak var refreshButton: UIButton!
     @IBOutlet weak var refreshActivityIndicator: UIActivityIndicatorView!
     
     
-    @IBOutlet weak var locationLabel: UILabel!
     @IBOutlet weak var temperatureLabel: UILabel!
     @IBOutlet weak var summaryLabel: UILabel!
     @IBOutlet weak var mainArt: UIImageView!
-    @IBOutlet weak var sunriseTime: UILabel!
-    @IBOutlet weak var sunsetTime: UILabel!
-    @IBOutlet weak var moonPhase: UILabel!
-
     
     let apiKey = "d7539a30efd5669aa702bdce4a2e1436"
     
@@ -113,7 +105,6 @@ class ViewController: UIViewController,CLLocationManagerDelegate {
         userLocation = "\(userLatitude),\(userLongitude)"
         
         let baseURL = NSURL(string: "https://api.forecast.io/forecast/\(apiKey)/")
-        //let forecastURL = NSURL(string: "34.017547,-118.493111", relativeToURL: baseURL)
         let forecastURL = NSURL(string: "\(userLocation)", relativeToURL: baseURL)
 println("### userLocation: \(forecastURL)")
         
@@ -161,21 +152,6 @@ println("### userLocation: \(forecastURL)")
         let artIdString = "\(artId)"
         self.mainArt.image = UIImage(named: artIdString)
     }
-/*
-    @IBAction func refresh() {
-        
-        refreshButton.hidden = true
-        refreshActivityIndicator.hidden = false
-        refreshActivityIndicator.startAnimating()
-        
-        getCurrentWeatherData()
-    }
-    
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-*/
     
 }
 

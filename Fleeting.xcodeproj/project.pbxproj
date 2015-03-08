@@ -164,10 +164,11 @@
 				TargetAttributes = {
 					14F179341A82D7CB005826D3 = {
 						CreatedOnToolsVersion = 6.1.1;
-						DevelopmentTeam = AN9FULVZAH;
+						DevelopmentTeam = Z75KY6T22H;
 					};
 					14F179491A82D7CB005826D3 = {
 						CreatedOnToolsVersion = 6.1.1;
+						DevelopmentTeam = Z75KY6T22H;
 						TestTargetID = 14F179341A82D7CB005826D3;
 					};
 				};
