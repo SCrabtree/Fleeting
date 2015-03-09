@@ -1,7 +1,7 @@
 //  ViewController.swift
 //
 //  Fleeting
-//  Created by Sean Crabtree on 2/04/15.
+//  Created by Sean Crabtree on 3/08/15.
 //  Copyright (c) 2015 Sean Crabtree. All rights reserved.
 
 import UIKit
@@ -119,7 +119,6 @@ println("### userLocation: \(forecastURL)")
                 let currentWeather = Current(weatherDictionary: weatherDictionary)
                 dispatch_async(dispatch_get_main_queue(), { () -> Void in
                     self.temperatureLabel.text = "\(currentWeather.temperature)"
-                    //self.precipitationLabel.text = "\(currentWeather.precipProbability)"
                     self.summaryLabel.text = "\(currentWeather.summary)"
                 })
             } else{
@@ -148,7 +147,7 @@ println("### userLocation: \(forecastURL)")
     
     func initArtwork() {
         let r = Int(arc4random())
-        let artId = r % 13 + 1;
+        let artId = r % 12 + 1;
         let artIdString = "\(artId)"
         self.mainArt.image = UIImage(named: artIdString)
     }
