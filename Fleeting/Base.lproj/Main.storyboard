@@ -351,6 +351,7 @@
                         <outlet property="mainArt" destination="Gkb-mf-uyx" id="Rc6-yh-Ome"/>
                         <outlet property="summaryLabel" destination="WPO-rj-ihP" id="TED-wF-dyu"/>
                         <outlet property="sunriseTime" destination="eWk-Zi-p2L" id="Iqw-iT-ZGy"/>
+                        <outlet property="sunsetTime" destination="KlS-je-dyu" id="Wuh-Lw-W05"/>
                         <outlet property="temperatureLabel" destination="LH4-Ju-tXT" id="mTI-2c-reU"/>
                     </connections>
                 </viewController>

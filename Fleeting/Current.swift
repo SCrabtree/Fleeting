@@ -9,27 +9,26 @@ import UIKit
 
 struct Current {
     
-    var currentTime: String?
     var temperature: Int
-    var humidity: Double
-    var precipProbability: Double
     var summary: String
-    var icon: UIImage?
-    // var moonPhase: UIImage?
+    var sunriseTime: String?
+    var sunsetTime: String?
     
     init(weatherDictionary: NSDictionary) {
         let currentWeather = weatherDictionary["currently"] as NSDictionary
         
         temperature = currentWeather["temperature"] as Int
-        humidity = currentWeather["humidity"] as Double
-        precipProbability = currentWeather["precipProbability"] as Double
         summary = currentWeather["summary"] as String
         
-        let currentTimeIntValue = currentWeather["time"] as Int
-        currentTime = dateStringFromUnixTime(currentTimeIntValue)
-        
-//        let iconString = currentWeather["icon"] as String
-//        icon = weatherIconFromString(iconString)
+        let dailyWeather = weatherDictionary["daily"] as NSDictionary
+        let dailySummary = dailyWeather["summary"] as String
+        let dailyDataArray = dailyWeather["data"] as NSArray
+        let dailyData = dailyDataArray.lastObject as NSDictionary
+
+        let sunriseTimeIntValue = dailyData["sunriseTime"] as Int
+        sunriseTime = dateStringFromUnixTime(sunriseTimeIntValue) as String
+        let sunsetTimeIntValue = dailyData["sunsetTime"] as Int
+        sunsetTime = dateStringFromUnixTime(sunsetTimeIntValue)
     }
     
     func dateStringFromUnixTime(unixTime: Int) -> String {

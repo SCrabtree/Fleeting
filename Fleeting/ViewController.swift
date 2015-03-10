@@ -113,9 +113,7 @@ class ViewController: UIViewController,CLLocationManagerDelegate {
         userLocation = "\(userLatitude),\(userLongitude)"
         
         let baseURL = NSURL(string: "https://api.forecast.io/forecast/\(apiKey)/")
-        //let forecastURL = NSURL(string: "34.017547,-118.493111", relativeToURL: baseURL)
         let forecastURL = NSURL(string: "\(userLocation)", relativeToURL: baseURL)
-println("### userLocation: \(forecastURL)")
         
         let sharedSession = NSURLSession.sharedSession()
         let downloadTask: NSURLSessionDownloadTask = sharedSession.downloadTaskWithURL(forecastURL!, completionHandler: { (location: NSURL!, response: NSURLResponse!, error: NSError!) -> Void in
@@ -128,10 +126,11 @@ println("### userLocation: \(forecastURL)")
                 let currentWeather = Current(weatherDictionary: weatherDictionary)
                 dispatch_async(dispatch_get_main_queue(), { () -> Void in
                     self.temperatureLabel.text = "\(currentWeather.temperature)"
-                    //self.precipitationLabel.text = "\(currentWeather.precipProbability)"
                     self.summaryLabel.text = "\(currentWeather.summary)"
+                    self.sunriseTime.text = "\(currentWeather.sunriseTime!)"
+                    self.sunsetTime.text = "\(currentWeather.sunsetTime!)"
                 })
-            } else{
+            } else {
                 
                 let networkIssueController = UIAlertController(title: "Error", message: "Unable to load data. Connectivity error!", preferredStyle: .Alert)
                 
