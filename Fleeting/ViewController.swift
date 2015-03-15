@@ -17,9 +17,6 @@ class ViewController: UIViewController,CLLocationManagerDelegate {
     var userLatitude : Double!
     var userLongitude : Double!
     
-//    @IBOutlet weak var iconView: UIImageView!
-//    @IBOutlet weak var precipitationLabel: UILabel!
-//    @IBOutlet weak var currentTimeLabel: UILabel!
     @IBOutlet weak var refreshButton: UIButton!
     @IBOutlet weak var refreshActivityIndicator: UIActivityIndicatorView!
     
