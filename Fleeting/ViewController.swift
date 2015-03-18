@@ -21,21 +21,17 @@ class ViewController: UIViewController,CLLocationManagerDelegate {
     @IBOutlet weak var refreshActivityIndicator: UIActivityIndicatorView!
     
     
-    @IBOutlet weak var locationLabel: UILabel!
     @IBOutlet weak var temperatureLabel: UILabel!
     @IBOutlet weak var summaryLabel: UILabel!
     @IBOutlet weak var mainArt: UIImageView!
     @IBOutlet weak var sunriseTime: UILabel!
     @IBOutlet weak var sunsetTime: UILabel!
-    @IBOutlet weak var moonPhase: UILabel!
 
     
     let apiKey = "d7539a30efd5669aa702bdce4a2e1436"
     
-    //
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
         
         initLocationManager()
         initArtwork()
@@ -100,6 +96,11 @@ class ViewController: UIViewController,CLLocationManagerDelegate {
             locationManager.startUpdatingLocation()
         } else {
             NSLog("Denied access: \(locationStatus)")
+            
+//            ACCESS NOT ALLOWED
+//            Alert: "Allowing access to location information is required for use."
+//            Ask again??
+
         }
     }
     
@@ -157,21 +158,6 @@ class ViewController: UIViewController,CLLocationManagerDelegate {
         let artIdString = "\(artId)"
         self.mainArt.image = UIImage(named: artIdString)
     }
-/*
-    @IBAction func refresh() {
-        
-        refreshButton.hidden = true
-        refreshActivityIndicator.hidden = false
-        refreshActivityIndicator.startAnimating()
-        
-        getCurrentWeatherData()
-    }
-    
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-*/
-    
+
 }
 
