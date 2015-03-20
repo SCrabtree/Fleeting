@@ -8,14 +8,17 @@ import UIKit
 import CoreLocation
 
 class ViewController: UIViewController,CLLocationManagerDelegate {
+    let defaultLatitude: Double = 37.30925
+    let defaultLongitude: Double = -122.0436444
     
-    var seenError : Bool = false
-    var locationFixAchieved : Bool = false
-    var locationStatus : NSString = "Not Started"
+    var allowLocation: Bool = false
+    var seenError: Bool = false
+    var locationFixAchieved: Bool = false
+    var locationStatus: NSString = "Not Started"
     var locationManager: CLLocationManager!
-    var userLocation : String!
-    var userLatitude : Double!
-    var userLongitude : Double!
+    var userLocation: String!
+    var userLatitude: Double!
+    var userLongitude: Double!
     
     @IBOutlet weak var refreshButton: UIButton!
     @IBOutlet weak var refreshActivityIndicator: UIActivityIndicatorView!
@@ -26,6 +29,7 @@ class ViewController: UIViewController,CLLocationManagerDelegate {
     @IBOutlet weak var mainArt: UIImageView!
     @IBOutlet weak var sunriseTime: UILabel!
     @IBOutlet weak var sunsetTime: UILabel!
+    @IBOutlet weak var locationName: UILabel!
 
     
     let apiKey = "d7539a30efd5669aa702bdce4a2e1436"
@@ -76,7 +80,7 @@ class ViewController: UIViewController,CLLocationManagerDelegate {
     }
     
     func locationManager(manager: CLLocationManager!, didChangeAuthorizationStatus status: CLAuthorizationStatus) {
-        var shouldIAllow = false
+        self.allowLocation = false
         
         switch status {
         case CLAuthorizationStatus.Restricted:
@@ -87,21 +91,24 @@ class ViewController: UIViewController,CLLocationManagerDelegate {
             locationStatus = "Location access is not determined"
         default:
             locationStatus = "Location access is allowed"
-            shouldIAllow = true
+            self.allowLocation = true
         }
+        
         NSNotificationCenter.defaultCenter().postNotificationName("LabelHasbeenUpdated", object: nil)
-        if (shouldIAllow == true) {
+        if (self.allowLocation == true) {
             NSLog("Location is allowed")
             // Start location services
             locationManager.startUpdatingLocation()
         } else {
             NSLog("Denied access: \(locationStatus)")
-            
-//            ACCESS NOT ALLOWED
-//            Alert: "Allowing access to location information is required for use."
-//            Ask again??
-
+            self.userLatitude = self.defaultLatitude
+            self.userLongitude = self.defaultLongitude
+            getCurrentWeatherData()
         }
+        
+        dispatch_async(dispatch_get_main_queue(), { () -> Void in
+            self.locationName.text = self.allowLocation ? "Now" : "Cupertino, CA"
+        })
     }
     
     // WEATHER
